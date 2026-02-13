@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- 
+=================================================================================================
+FILE: ThrillDiggerCalculator.exe.manifest
+
+DESCRIPTION:
+This is an XML Application Manifest.
+It is a resource file that Windows checks when launching the executable.
+
+IMPORTANCE:
+It is CRITICAL for the visual appearance of the application.
+Without this file (and the corresponding linker directive in main.cpp), the application would
+default to "Windows 95/classic" style controls (blocky, grey buttons) instead of the
+modern "Visual Styles" (rounded buttons, gradients) found in Windows XP, Vista, 10, and 11.
+
+INTERACTION:
+- Enables "Common Controls v6", which is the library responsible for drawing modern UI elements.
+- Sets the requested execution level (security).
+=================================================================================================
+-->
+<assembly xmlns='urn:schemas-microsoft-com:asm.v1' manifestVersion='1.0'>
+  <!-- Define security requirements -->
+  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
+    <security>
+      <requestedPrivileges>
+        <!-- 'asInvoker': Run with the same permissions as the user (don't demand Admin) -->
+        <requestedExecutionLevel level='asInvoker' uiAccess='false' />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  
+  <!-- Define dependency on Common Controls library (modern themes) -->
+  <dependency>
+    <dependentAssembly>
+      <!-- 
+           This block specifically requests version 6.0.0.0 of Common-Controls.
+           This is the "switch" that turns on modern UI rendering for standard Windows controls.
+      -->
+      <assemblyIdentity type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*' />
+    </dependentAssembly>
+  </dependency>
+</assembly>
